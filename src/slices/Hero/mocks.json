@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Tribe"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla tempor eu minim velit reprehenderit aute non aute occaecat ut laboris voluptate culpa consectetur anim."
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "fb67c6e7-7198-459c-8d1e-716bc6fd37eb",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "most"
+				}
+			}
+		},
+		"items": []
+	}
+]
