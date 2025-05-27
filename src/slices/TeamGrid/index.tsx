@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Content } from '@prismicio/client';
-import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
+import { PrismicRichText, PrismicText, SliceComponentProps } from '@prismicio/react';
 import { Bounded } from '@/app/components/Bounded';
 import { Heading } from '@/app/components/Heading';
 import { createClient } from '@/prismicio';
@@ -29,7 +29,7 @@ const TeamGrid: FC<TeamGridProps> = async ({ slice }) => {
 					as="h2"
 					size="lg"
 					className="mb-8 text-center text-white">
-					<PrismicRichText field={slice.primary.heading} />
+					<PrismicText field={slice.primary.heading} />
 				</Heading>
 			</SlideIn>
 

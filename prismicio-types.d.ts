@@ -342,11 +342,150 @@ interface SkaterDocumentData {
 export type SkaterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<SkaterDocumentData>, "skater", Lang>;
 
+/**
+ * Item in *Board Customizer → Wheels*
+ */
+export interface WheelsDocumentDataWheelsItem {
+  /**
+   * Texture field in *Board Customizer → Wheels*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.wheels[].texture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  texture: prismic.ImageField<never>;
+
+  /**
+   * UID field in *Board Customizer → Wheels*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.wheels[].uid
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  uid: prismic.KeyTextField;
+}
+
+type WheelsDocumentDataSlicesSlice = never;
+
+/**
+ * Item in *Board Customizer → Decks*
+ */
+export interface WheelsDocumentDataDecksItem {
+  /**
+   * Texture field in *Board Customizer → Decks*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.decks[].texture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  texture: prismic.ImageField<never>;
+
+  /**
+   * UID field in *Board Customizer → Decks*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.decks[].uid
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  uid: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Board Customizer → Metals*
+ */
+export interface WheelsDocumentDataMetalsItem {
+  /**
+   * Color field in *Board Customizer → Metals*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.metals[].color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  color: prismic.ColorField;
+
+  /**
+   * UID field in *Board Customizer → Metals*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.metals[].uid
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  uid: prismic.KeyTextField;
+}
+
+/**
+ * Content for Board Customizer documents
+ */
+interface WheelsDocumentData {
+  /**
+   * Wheels field in *Board Customizer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.wheels[]
+   * - **Tab**: Wheels
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  wheels: prismic.GroupField<Simplify<WheelsDocumentDataWheelsItem>>;
+
+  /**
+   * `slices` field in *Board Customizer*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.slices[]
+   * - **Tab**: Wheels
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<WheelsDocumentDataSlicesSlice> /**
+   * Decks field in *Board Customizer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.decks[]
+   * - **Tab**: Desks
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */;
+  decks: prismic.GroupField<Simplify<WheelsDocumentDataDecksItem>> /**
+   * Metals field in *Board Customizer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wheels.metals[]
+   * - **Tab**: Metals
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */;
+  metals: prismic.GroupField<Simplify<WheelsDocumentDataMetalsItem>>;
+}
+
+/**
+ * Board Customizer document from Prismic
+ *
+ * - **API ID**: `wheels`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WheelsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<WheelsDocumentData>,
+    "wheels",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | HomepageDocument
   | SettingsDocument
   | SkateboardDocument
-  | SkaterDocument;
+  | SkaterDocument
+  | WheelsDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -381,6 +520,46 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Skateboard Deck Texture field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skateboard_deck_texture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  skateboard_deck_texture: prismic.ImageField<never>;
+
+  /**
+   * Skate Wheel Texture field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skate_wheel_texture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  skate_wheel_texture: prismic.ImageField<never>;
+
+  /**
+   * Skateboard Bolt Color field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skateboard_bolt_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  skateboard_bolt_color: prismic.ColorField;
+
+  /**
+   * Skateboard Truck Color field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skateboard_truck_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  skateboard_truck_color: prismic.ColorField;
 }
 
 /**
@@ -789,6 +968,12 @@ declare module "@prismicio/client" {
       SkateboardDocumentData,
       SkaterDocument,
       SkaterDocumentData,
+      WheelsDocument,
+      WheelsDocumentData,
+      WheelsDocumentDataWheelsItem,
+      WheelsDocumentDataSlicesSlice,
+      WheelsDocumentDataDecksItem,
+      WheelsDocumentDataMetalsItem,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
